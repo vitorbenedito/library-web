@@ -1,0 +1,31 @@
+<div class=row>
+   <div class="col-lg-12">
+      <rd-widget>
+         <rd-widget-header icon="fa-tasks" title="Books">
+            <div class="pull-right">
+               <button class="btn btn-sm btn-info" ng-click="createBook()">Create new Book</button>
+            </div>
+         </rd-widget-header>
+         <rd-widget-body classes="medium no-padding">
+            <div class="table-responsive">
+               <table class="table">
+                  <thead>
+                     <tr>
+                        <th>Name</th>
+                        <th></th>
+                     </tr>
+                  </thead>
+
+                  <tbody ng-repeat="book in books">
+                     <tr>
+                        <td>{{book.title}}</td>
+                        <td><span class=text-success><i class="fa fa-edit" ng-click="editBook(book)"></i></span></td>
+                        <td><span class=text-delete><i class="fa fa-times" ng-click="remove(book)"></i></span></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </rd-widget-body>
+      </rd-widget>
+   </div>
+</div>

@@ -1,5 +1,5 @@
 angular.module('LibraryApp.controllers', [])
-    .controller('UserController', function ($scope,$http,$location,$route,$routeParams, UserService) {
+    .controller('BookController', function ($scope,$http,$location,$route,$routeParams, BookService) {
 
     	$scope.init = function(){
 
@@ -11,31 +11,31 @@ angular.module('LibraryApp.controllers', [])
 
         $scope.getAll = function(){
 
-            $scope.data = UserService.getAll().success(function(response){
-                $scope.users = response;
+            $scope.data = BookService.getAll().success(function(response){
+                $scope.books = response;
             });
         };
 
-        $scope.createUser = function(){
-        	$scope.user = {};
-        	$location.path('/users/new');
+        $scope.createBook = function(){
+        	$scope.book = {};
+        	$location.path('/books/new');
         };
 
-        $scope.editUser = function(user){
-        	$location.path('/users/edit/' + user.id);
+        $scope.editBook = function(book){
+        	$location.path('/books/edit/' + book.id);
         };
 
         $scope.back = function(){
-        	$location.path('/users');
+        	$location.path('/books');
         };
 
         $scope.clear = function(){
-        	$scope.user = {};
+        	$scope.book = {};
         };
 
-        $scope.remove = function(user){
+        $scope.remove = function(book){
 
-        	UserService.delete(user.id)
+        	BookService.delete(book.id)
         	    .success(function(data) {
         	   	  $scope.getAll();
         	    })
@@ -45,9 +45,9 @@ angular.module('LibraryApp.controllers', [])
         };
 
         $scope.edit  = function(){
-        	UserService.get($routeParams.id)
+        	BookService.get($routeParams.id)
         	    .success(function(data) {
-        	   	  $scope.user = data;
+        	   	  $scope.book = data;
         	    })
         	    .error(function(data, status) {
         	        
@@ -56,9 +56,9 @@ angular.module('LibraryApp.controllers', [])
 
         $scope.save = function(){
 
-        	if($scope.user.id != null){
+        	if($scope.book.id != null){
 
-                UserService.update($scope.user.id, $scope.user)
+                BookService.update($scope.book.id, $scope.book)
                     .success(function(data) {
                       $scope.back();
                     })
@@ -68,7 +68,7 @@ angular.module('LibraryApp.controllers', [])
         		
         	}else{
 
-                UserService.create($scope.user)
+                BookService.create($scope.book)
                     .success(function(data) {
                       $scope.back();
                     })
