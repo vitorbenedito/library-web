@@ -42,6 +42,11 @@ angular.module('LibraryApp', [
 	  			templateUrl: "templates/book/form.html", 
 	  			controller: "BookController"
 	  		})
+	  	.when("/books/loan", 
+	  		{
+	  			templateUrl: "templates/book/loan.html", 
+	  			controller: "BookController"
+	  		})
 	  	.when('/books/edit/:id', 
 	  		{
 	  			templateUrl: 'templates/book/form.html', 

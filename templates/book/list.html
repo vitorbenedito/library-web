@@ -4,6 +4,7 @@
          <rd-widget-header icon="fa-tasks" title="Books">
             <div class="pull-right">
                <button class="btn btn-sm btn-info" ng-click="createBook()">Create new Book</button>
+               <button class="btn btn-sm btn-info" ng-click="loanBook()">Loan Book</button>
             </div>
          </rd-widget-header>
          <rd-widget-body classes="medium no-padding">
@@ -11,7 +12,8 @@
                <table class="table">
                   <thead>
                      <tr>
-                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Author</th>
                         <th></th>
                      </tr>
                   </thead>
@@ -19,6 +21,7 @@
                   <tbody ng-repeat="book in books">
                      <tr>
                         <td>{{book.title}}</td>
+                        <td>{{book.author}}</td>
                         <td><span class=text-success><i class="fa fa-edit" ng-click="editBook(book)"></i></span></td>
                         <td><span class=text-delete><i class="fa fa-times" ng-click="remove(book)"></i></span></td>
                      </tr>

@@ -21,6 +21,17 @@ angular.module('LibraryApp.controllers', [])
         	$location.path('/books/new');
         };
 
+        $scope.loanBook = function(){
+            UserService.getAll()
+                .success(function(data) {
+                    $scope.users = data;
+                    $location.path('/books/loan');
+                })
+                .error(function(data, status) {
+                    
+                });
+        };
+
         $scope.editBook = function(book){
         	$location.path('/books/edit/' + book.id);
         };

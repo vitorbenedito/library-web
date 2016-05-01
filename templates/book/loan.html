@@ -1,7 +1,7 @@
 <div class=row>
 <div class="col-lg-10">
    <rd-widget>
-      <rd-widget-header icon=fa-tasks title=books>
+      <rd-widget-header icon="fa-tasks" title="loanBook">
      	 <div class="pull-right">
          	<button class="btn btn-sm btn-info" ng-click="back()">Back</button>
          </div>
@@ -10,12 +10,14 @@
             <div class="form-group">
                <div class="row">
                   <div class="col-md-6">
-                     <label for="title">Title:</label>
-                     <input type="text" class="form-control" id="title" ng-model="book.title">
+                     <label for="user">User:</label>
+                     <select ng-model="user" ng-options="user.name for user in users">
+				      	<option value="">-- choose user --</option>
+				      </select>
                   </div>
                   <div class="col-md-6">
                      <label for="author">Title:</label>
-                     <input type="text" class="form-control" id="author" ng-model="book.author">
+                     <uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></uib-datepicker>
                   </div>
                </div>
                <button class="btn btn-sm btn-info" ng-click="save()">Save</button>
