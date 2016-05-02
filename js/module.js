@@ -1,15 +1,16 @@
 angular.module('LibraryApp', [
-  'LibraryApp.controllers',
-  'LibraryApp.services',
   'ngRoute',
-  'ngCookies'
+  'ngCookies',
+  'ui.bootstrap'
 ])
 .constant('DEFAULT_DOMAIN','http://localhost:8080')
 .constant('USERS_API','/api/users')
 .constant('BOOKS_API','/api/books')
-.service('urls',function(DEFAULT_DOMAIN, USERS_API, BOOKS_API){ 
+.constant('BOOKLOAN_API','/api/bookloans')
+.service('urls',function(DEFAULT_DOMAIN, USERS_API, BOOKS_API, BOOKLOAN_API){ 
 	this.users = DEFAULT_DOMAIN + USERS_API;
 	this.books = DEFAULT_DOMAIN + BOOKS_API;
+	this.bookLoan = DEFAULT_DOMAIN + BOOKLOAN_API;
 })
 .config(['$routeProvider', function($routeProvider) {
 
@@ -42,16 +43,16 @@ angular.module('LibraryApp', [
 	  			templateUrl: "templates/book/form.html", 
 	  			controller: "BookController"
 	  		})
-	  	.when("/books/loan", 
-	  		{
-	  			templateUrl: "templates/book/loan.html", 
-	  			controller: "BookController"
-	  		})
 	  	.when('/books/edit/:id', 
 	  		{
 	  			templateUrl: 'templates/book/form.html', 
 	  			controller: "BookController", 
 	  			method:"edit"
+	  		})
+	  	.when("/books/loan/:id", 
+	  		{
+	  			templateUrl: "templates/book/loan.html", 
+	  			controller: "BookLoanController"
 	  		})
 	  	.otherwise(
 	  		{

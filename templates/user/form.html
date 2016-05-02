@@ -19,5 +19,26 @@
                <button class="btn btn-sm btn-info" ng-click="clear()">Cancel</button>
       </rd-widget-body>
    </rd-widget>
+   <rd-widget-body classes="medium no-padding">
+            <div class="table-responsive">
+               <table class="table">
+                  <thead>
+                     <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th></th>
+                     </tr>
+                  </thead>
+
+                  <tbody ng-repeat="bookLoan in bookLoans">
+                     <tr>
+                        <td>{{bookLoan.book.title}}</td>
+                        <td>{{bookLoan.book.author}}</td>
+                        <td><span class=text-success><i class="fa fa-arrow-down" ng-click="returnBook(bookLoan)"></i></span></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </rd-widget-body>
    </div>
 </div>

@@ -1,4 +1,4 @@
-angular.module('LibraryApp.services', [])
+angular.module('LibraryApp')
 	.service('BookService', function ($http, urls) {
 
 		this.getAll = function(){

@@ -1,5 +1,5 @@
-angular.module('LibraryApp.controllers', [])
-    .controller('BookController', function ($scope,$http,$location,$route,$routeParams, BookService) {
+angular.module('LibraryApp')
+    .controller('BookController', function ($scope,$http,$location,$route,$routeParams, BookService, UserService) {
 
     	$scope.init = function(){
 
@@ -21,15 +21,8 @@ angular.module('LibraryApp.controllers', [])
         	$location.path('/books/new');
         };
 
-        $scope.loanBook = function(){
-            UserService.getAll()
-                .success(function(data) {
-                    $scope.users = data;
-                    $location.path('/books/loan');
-                })
-                .error(function(data, status) {
-                    
-                });
+        $scope.loan = function(book){
+            $location.path('/books/loan/' + book.id);
         };
 
         $scope.editBook = function(book){

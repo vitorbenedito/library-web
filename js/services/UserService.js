@@ -1,4 +1,4 @@
-angular.module('LibraryApp.services', [])
+angular.module('LibraryApp')
 .service('UserService', function ($http, urls) {
 
 	this.getAll = function(){
@@ -25,6 +25,10 @@ angular.module('LibraryApp.services', [])
 
 	this.get = function(id){
 		return $http.get(urls.users + "/" + id);
+	};
+
+	this.getBookLoans = function(id){
+		return $http.get(urls.users + "/" + id + "/bookloans");
 	};
 
 	this.delete = function(id){

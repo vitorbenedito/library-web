@@ -1,12 +1,11 @@
-angular.module('LibraryApp.controllers', [])
-    .controller('UserController', function ($scope,$http,$location,$route,$routeParams, UserService) {
+angular.module('LibraryApp')
+    .controller('UserController', function ($scope,$http,$location,$route,$routeParams, UserService, BookLoanService) {
 
     	$scope.init = function(){
 
     		if ($route.current.method !== undefined) {
-           		$scope[$route.current.method]();
-         	}
-
+                $scope[$route.current.method]();
+            }
     	};
 
         $scope.getAll = function(){
@@ -47,11 +46,33 @@ angular.module('LibraryApp.controllers', [])
         $scope.edit  = function(){
         	UserService.get($routeParams.id)
         	    .success(function(data) {
-        	   	  $scope.user = data;
+
+        	   	   $scope.user = data;
+                   $scope.bookLoans = {};
+
+                   UserService.getBookLoans($routeParams.id)
+                        .success(function(data) {
+                            $scope.bookLoans = data;
+                        })
+                        .error(function(data, status) {
+                            
+                        });
         	    })
         	    .error(function(data, status) {
         	        
         	    });
+        };
+
+        $scope.returnBook = function(bookLoan){
+            
+            BookLoanService.returnBook(bookLoan.id)
+                .success(function(data) {
+                    $scope.edit();
+                })
+                .error(function(data, status) {
+                        
+                });
+              
         };
 
         $scope.save = function(){

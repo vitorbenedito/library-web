@@ -2,6 +2,7 @@
 <div class="col-lg-10">
    <rd-widget>
       <rd-widget-header icon="fa-tasks" title="loanBook">
+       <label><u>{{book.title}}</u></label>
      	 <div class="pull-right">
          	<button class="btn btn-sm btn-info" ng-click="back()">Back</button>
          </div>
@@ -12,15 +13,10 @@
                   <div class="col-md-6">
                      <label for="user">User:</label>
                      <select ng-model="user" ng-options="user.name for user in users">
-				      	<option value="">-- choose user --</option>
-				      </select>
-                  </div>
-                  <div class="col-md-6">
-                     <label for="author">Title:</label>
-                     <uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></uib-datepicker>
+                     </select>
                   </div>
                </div>
-               <button class="btn btn-sm btn-info" ng-click="save()">Save</button>
+               <button class="btn btn-sm btn-info" ng-click="loan()">Loan</button>
                <button class="btn btn-sm btn-info" ng-click="clear()">Cancel</button>
       </rd-widget-body>
    </rd-widget>
