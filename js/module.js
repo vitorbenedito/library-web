@@ -3,7 +3,7 @@ angular.module('LibraryApp', [
   'ngCookies',
   'ui.bootstrap'
 ])
-.constant('DEFAULT_DOMAIN','http://library.sa-east-1.elasticbeanstalk.com')
+.constant('DEFAULT_DOMAIN','http://localhost:3000')
 .constant('USERS_API','/api/users')
 .constant('BOOKS_API','/api/books')
 .constant('BOOKLOAN_API','/api/bookloans')
