@@ -4,7 +4,7 @@ Implementation of a library, wuth AngularJS.
 
 ## Run
 
-The app use bower and gulp to deploy the static files and js.
+The app use bower to install the dependencies and gulp to deploy the static files and js.
 
 ```
 
